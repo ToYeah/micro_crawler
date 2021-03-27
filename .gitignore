@@ -1,0 +1,5 @@
+.scrapy/
+.vscode/
+*.json
+*.html
+*.pyc
