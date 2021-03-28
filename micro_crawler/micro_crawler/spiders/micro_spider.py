@@ -8,7 +8,11 @@ class MicroSpider(scrapy.Spider):
     def start_requests(self):
         url = 'https://suumo.jp'
         query = ''
-        yield scrapy.Request(url=url+query, callback=self.parse)
+        if self.query is None:
+            url+=query
+        else:
+            url+=self.query
+        yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
         building_name = ""
