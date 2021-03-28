@@ -7,7 +7,7 @@ class MicroSpider(scrapy.Spider):
 
     def start_requests(self):
         url = 'https://suumo.jp'
-        query = '/jj/chintai/ichiran/FR301FC001/?ar=030&bs=040&ra=013&rn=0005&ek=000517640&cb=0.0&ct=9999999&mb=0&mt=9999999&md=01&md=06&md=07&et=9999999&cn=1&shkr1=03&shkr2=03&shkr3=03&shkr4=03&sngz=&po1=25&pc=50'
+        query = ''
         if query is None:
             url+=self.query
         else:
