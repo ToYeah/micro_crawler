@@ -7,7 +7,7 @@ class MicroSpider(scrapy.Spider):
 
     def start_requests(self):
         url = 'https://suumo.jp'
-        query = ''
+        query = None
         if query is None:
             url+=self.query
         else:
