@@ -7,7 +7,7 @@ class MicroSpider(scrapy.Spider):
 
     def start_requests(self):
         url = 'https://suumo.jp'
-        query = None
+        query = '/jj/chintai/ichiran/FR301FC001/?ar=030&bs=040&ra=013&rn=0005&ek=000517640&cb=0.0&ct=9999999&mb=0&mt=9999999&md=01&md=06&md=07&et=9999999&cn=1&shkr1=03&shkr2=03&shkr3=03&shkr4=03&sngz=&po1=25&pc=50'
         if query is None:
             url+=self.query
         else:
@@ -18,7 +18,7 @@ class MicroSpider(scrapy.Spider):
         next_url = ""
         for building in response.css("div.cassetteitem"):
             building_name = building.css("div.cassetteitem_content-title::text").get()
-            for cassette in response.css("tr.js-cassette_link"):
+            for cassette in building.css("tbody"):
                 yield PropertyInfo(
                     name=building_name,
                     floor=cassette.css("td::text")[4].get().replace('\r\n\t\t\t\t\t\t\t\t\t\t\t', ''),
