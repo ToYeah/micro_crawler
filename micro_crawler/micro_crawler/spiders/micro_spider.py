@@ -19,7 +19,7 @@ class MicroSpider(scrapy.Spider):
             for cassette in response.css("tr.js-cassette_link"):
                 yield PropertyInfo(
                     name=building_name,
-                    floor=response.css("div.cassetteitem")[0].css("tr.js-cassette_link")[0].css("td::text")[4].get(),
+                    floor=response.css("div.cassetteitem")[0].css("tr.js-cassette_link")[0].css("td::text")[4].get().replace('\r\n\t\t\t\t\t\t\t\t\t\t\t', ''),
                     price_rent=cassette.css("span.cassetteitem_price--rent").css("span.cassetteitem_other-emphasis::text").get(),
                     price_admin=cassette.css("span.cassetteitem_price--administration::text").get(),
                     price_deposit=cassette.css("span.cassetteitem_price--deposit::text").get(),
