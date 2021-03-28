@@ -7,11 +7,11 @@ class MicroSpider(scrapy.Spider):
 
     def start_requests(self):
         url = 'https://suumo.jp'
-        query = ''
-        if self.query is None:
-            url+=query
-        else:
+        query = None
+        if query is None:
             url+=self.query
+        else:
+            url+=query
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
