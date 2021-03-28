@@ -15,7 +15,6 @@ class MicroSpider(scrapy.Spider):
         yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        building_name = ""
         next_url = ""
         for building in response.css("div.cassetteitem"):
             building_name = building.css("div.cassetteitem_content-title::text").get()
